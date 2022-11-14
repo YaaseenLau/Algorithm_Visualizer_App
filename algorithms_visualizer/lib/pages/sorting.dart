@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:algorithms_visualizer/algorithms/sorting/sort.dart';
 import 'package:algorithms_visualizer/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -48,10 +47,10 @@ class _SortingViewState extends State<SortingView> {
               children: bars,
             ),
           ),
-          const SizedBox(
-            height: 10,
+          const Text(
+            "Change Array Size: ",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
-          const Text("Change Array Size: "),
           Container(
               height: 30,
               width: 325,
@@ -60,32 +59,46 @@ class _SortingViewState extends State<SortingView> {
                   value: context.watch<SortingModel>().arraySize,
                   min: 5,
                   max: 20,
-                  onChanged: ((value) {
-                    context.read<SortingModel>().setArraySize(value);
-                    context.read<SortingModel>().generateArray(arraySize);
-                  }))),
+                  activeColor: (!context.watch<SortingModel>().sorting)
+                      ? Colors.amber
+                      : Colors.grey,
+                  onChanged: (!context.watch<SortingModel>().sorting)
+                      ? ((value) {
+                          context.read<SortingModel>().setArraySize(value);
+                          context.read<SortingModel>().generateArray(arraySize);
+                        })
+                      : ((value) {}))),
           const Divider(
             thickness: 1,
-            color: Colors.grey,
+            color: Colors.black,
           ),
           const SizedBox(
             height: 8,
           ),
           AppButton(
               name: "Generate New Array",
-              onTap: () {
-                context.read<SortingModel>().generateArray(arraySize);
-              }),
+              color: (!context.watch<SortingModel>().sorting)
+                  ? Colors.amber
+                  : Colors.grey,
+              onTap: (!context.watch<SortingModel>().sorting)
+                  ? () {
+                      context.read<SortingModel>().generateArray(arraySize);
+                    }
+                  : () {}),
           const SizedBox(
             height: 8,
           ),
           AppButton(
             name: 'Sort',
-            onTap: () {
-              context.read<SortingModel>().bubblesort();
-            },
-            color: Colors.pink,
-          ),
+            onTap: (!context.watch<SortingModel>().sorting)
+                ? () {
+                    context.read<SortingModel>().bubblesort();
+                  }
+                : () {},
+            color: (!context.watch<SortingModel>().sorting)
+                ? Colors.amber
+                : Colors.grey,
+          )
         ],
       ),
     );

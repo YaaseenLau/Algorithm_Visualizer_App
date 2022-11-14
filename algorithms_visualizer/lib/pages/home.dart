@@ -1,6 +1,5 @@
 import 'package:algorithms_visualizer/widgets/button.dart';
 import 'package:flutter/material.dart';
-import '';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -30,6 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const Text(
                 'Choose an algorithm type: ',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               const SizedBox(
                 height: 16.0,

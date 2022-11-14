@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton(
-      {super.key, required this.name, this.onTap, this.color = Colors.pink});
+      {super.key, required this.name, this.onTap, this.color = Colors.amber});
   final String name;
   final void Function()? onTap;
   final Color color;
@@ -22,7 +22,8 @@ class AppButton extends StatelessWidget {
           child: Center(
             child: Text(
               name,
-              style: TextStyle(color: Colors.white),
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
           ),
         ));

@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Algorithms Visualizer',
       theme: ThemeData(
-          primarySwatch: Colors.pink,
+          primarySwatch: Colors.amber,
           textTheme: GoogleFonts.chakraPetchTextTheme()),
       initialRoute: "/home",
       routes: {
