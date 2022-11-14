@@ -2,9 +2,13 @@ import 'package:algorithms_visualizer/pages/sorting.dart';
 import 'package:flutter/material.dart';
 import 'package:algorithms_visualizer/pages/home.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'algorithms/sorting/sort.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: ((context) => SortingModel()))
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
