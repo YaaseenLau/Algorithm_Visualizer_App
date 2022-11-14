@@ -12,8 +12,9 @@ class SortingView extends StatefulWidget {
 
 class _SortingViewState extends State<SortingView> {
   List<Widget> bars = [];
+  double arraySize = 20;
 
-  generateArray(int size) {
+  generateArray(double size) {
     setState(() {
       bars.clear();
       for (var i = 0; i < size; i++) {
@@ -24,8 +25,14 @@ class _SortingViewState extends State<SortingView> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    generateArray(arraySize);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    generateArray(20);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -54,7 +61,27 @@ class _SortingViewState extends State<SortingView> {
             ),
           ),
           const SizedBox(
-            height: 80,
+            height: 10,
+          ),
+          Text("Change Array Size: "),
+          Container(
+              height: 30,
+              width: 325,
+              child: Slider(
+                  label: "Array size",
+                  value: arraySize,
+                  min: 5,
+                  max: 20,
+                  onChanged: ((value) => setState(() {
+                        arraySize = value;
+                        generateArray(arraySize);
+                      })))),
+          const Divider(
+            thickness: 1,
+            color: Colors.grey,
+          ),
+          const SizedBox(
+            height: 8,
           ),
           AppButton(
               name: "Generate New Array",
@@ -64,7 +91,10 @@ class _SortingViewState extends State<SortingView> {
           const SizedBox(
             height: 8,
           ),
-          const AppButton(name: 'Sort'),
+          const AppButton(
+            name: 'Sort',
+            color: Colors.grey,
+          ),
         ],
       ),
     );
