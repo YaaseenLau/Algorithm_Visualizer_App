@@ -1,4 +1,6 @@
+import 'package:algorithms_visualizer/widgets/button.dart';
 import 'package:flutter/material.dart';
+import '';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -32,37 +34,42 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(
                 height: 16.0,
               ),
-              algorithmButton('Sorting'),
+              AppButton(
+                  name: "Sorting",
+                  onTap: (() => _openSortingAlgorithmsView(context))),
               const SizedBox(
-                height: 16.0,
+                height: 8.0,
               ),
-              algorithmButton('Searching'),
+              AppButton(
+                name: "Searching",
+                onTap: () {},
+                color: Colors.grey,
+              ),
               const SizedBox(
-                height: 16.0,
+                height: 8.0,
               ),
-              algorithmButton('Recursion'),
+              AppButton(
+                name: "Recursion",
+                onTap: () {},
+                color: Colors.grey,
+              ),
               const SizedBox(
-                height: 16.0,
+                height: 8.0,
               ),
-              algorithmButton('Graphs'),
+              AppButton(
+                name: "Graphs",
+                onTap: () {},
+                color: Colors.grey,
+              ),
               const SizedBox(
-                height: 16.0,
+                height: 8.0,
               ),
-              algorithmButton('Heaps')
+              AppButton(
+                name: "Heaps",
+                onTap: () {},
+                color: Colors.grey,
+              ),
             ])));
-  }
-
-  GestureDetector algorithmButton(String name) {
-    return GestureDetector(
-      onTap: () => _openSortingAlgorithmsView(context),
-      child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 60),
-          decoration: BoxDecoration(
-            color: Colors.cyan,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Text(name)),
-    );
   }
 
   _openSortingAlgorithmsView(BuildContext context) {

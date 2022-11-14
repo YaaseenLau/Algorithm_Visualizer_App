@@ -1,3 +1,4 @@
+import 'package:algorithms_visualizer/pages/sorting.dart';
 import 'package:flutter/material.dart';
 import 'package:algorithms_visualizer/pages/home.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,12 +17,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Algorithms Visualizer',
       theme: ThemeData(
-          primarySwatch: Colors.cyan,
+          primarySwatch: Colors.pink,
           textTheme: GoogleFonts.chakraPetchTextTheme()),
       initialRoute: "/home",
       routes: {
         "/home": (context) => const MyHomePage(title: 'Algorithms Visualizer'),
-        // "/settings": ((context) => const SettingsView())
+        "/sorting-algorithms": ((context) => const SortingView())
       },
     );
   }
