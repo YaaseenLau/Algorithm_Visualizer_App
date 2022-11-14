@@ -1,9 +1,9 @@
-import 'package:algorithms_visualizer/pages/sorting.dart';
+import 'package:algorithms_visualizer/pages/sorting_view.dart';
 import 'package:flutter/material.dart';
 import 'package:algorithms_visualizer/pages/home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'algorithms/sorting/sort.dart';
+import 'algorithms/sorting/sort_model.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
