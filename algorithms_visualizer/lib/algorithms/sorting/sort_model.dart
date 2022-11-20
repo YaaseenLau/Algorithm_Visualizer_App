@@ -25,34 +25,50 @@ class SortingModel extends ChangeNotifier {
     print("Before: $barValues");
     bool swapping = true;
     _sorting = true;
+    int last = barValues.length - 1;
     notifyListeners();
     while (swapping) {
       swapping = false;
-      for (var i = 0; i < bars.length - 1; i++) {
+      for (var i = 0; i < last; i++) {
+        bars[i] = createBar(barValues[i], Colors.amber);
+        bars[i + 1] = createBar(barValues[i + 1], Colors.amber);
+        notifyListeners();
+        //delay for color animation
+        await Future.delayed(const Duration(milliseconds: 400), () {});
+
         if (barValues[i] >= barValues[i + 1]) {
           swapping = true;
           Widget tempBar = bars[i];
           double tempBarValue = barValues[i];
-          bars[i] = createBar(barValues[i], Colors.amber);
-          bars[i + 1] = createBar(barValues[i + 1], Colors.amber);
+          bars[i] = createBar(barValues[i], Colors.red);
+          bars[i + 1] = createBar(barValues[i + 1], Colors.red);
           notifyListeners();
 
           //delay for color animation
           await Future.delayed(const Duration(milliseconds: 400), () {});
 
-          bars[i] = createBar(barValues[i], Colors.black);
-          bars[i + 1] = createBar(barValues[i + 1], Colors.grey);
           notifyListeners();
           bars[i] = bars[i + 1];
           bars[i + 1] = tempBar;
           barValues[i] = barValues[i + 1];
           barValues[i + 1] = tempBarValue;
+
+          bars[i] = createBar(barValues[i], Colors.grey);
+          notifyListeners();
         } else {
-          bars[i + 1] = createBar(barValues[i + 1], Colors.black);
+          if (i + 1 == last) {
+            bars[i] = createBar(barValues[i], Colors.black);
+          } else {
+            bars[i] = createBar(barValues[i], Colors.grey);
+          }
         }
-        notifyListeners();
       }
+      print("got here");
+      bars[last] = createBar(barValues[last], Colors.black);
+      notifyListeners();
+      last--;
     }
+    bars[0] = createBar(barValues[0], Colors.black);
     _sorting = false;
     notifyListeners();
     print("After: $barValues");
@@ -68,9 +84,12 @@ class SortingModel extends ChangeNotifier {
     barValues.clear();
     for (var i = 0; i < size; i++) {
       double randomValue = 20 + (400 - 20) * Random().nextDouble();
+
+      //prevent duplicates
       while (barValues.contains(randomValue)) {
         randomValue = 20 + (400 - 20) * Random().nextDouble();
       }
+      
       barValues.add(randomValue);
       bars.add(createBar(randomValue, Colors.grey));
     }

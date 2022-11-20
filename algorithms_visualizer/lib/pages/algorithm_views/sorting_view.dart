@@ -31,7 +31,7 @@ class _SortingViewState extends State<SortingView> {
               },
             ),
             title: const Text(
-              'Sorting Algorithms',
+              'Bubble Sort',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
@@ -44,9 +44,12 @@ class _SortingViewState extends State<SortingView> {
               Expanded(
                   child: TabBarView(children: [
                 const Center(
-                    child: Text(
-                  "Some info about bubble sort",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                    child: Padding(
+                  padding: EdgeInsets.all(32.0),
+                  child: Text(
+                    "Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not suitable for large data sets as its average and worst-case time complexity is quite high.",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 )),
                 sortView()
               ])),

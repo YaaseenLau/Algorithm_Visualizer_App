@@ -1,16 +1,16 @@
-import 'package:algorithms_visualizer/widgets/button.dart';
 import 'package:flutter/material.dart';
+import 'package:algorithms_visualizer/widgets/button.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class SortingAlgorithmsView extends StatefulWidget {
+  const SortingAlgorithmsView({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<SortingAlgorithmsView> createState() => _SortingAlgorithmsViewState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SortingAlgorithmsViewState extends State<SortingAlgorithmsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,27 +28,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 16.0,
               ),
               const Text(
-                'Choose an algorithm type: ',
+                'Choose a sorting algorithm:',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               const SizedBox(
                 height: 16.0,
               ),
               AppButton(
-                  name: "Sorting",
-                  onTap: (() => _openView(context, "/sorting-algorithms"))),
+                  name: "Bubble Sort",
+                  onTap: (() => _openBubbleSortView(context))),
               const SizedBox(
                 height: 8.0,
               ),
               AppButton(
-                name: "Pathfinding",
-                onTap: (() => _openView(context, "/pathfinding-algorithms")),
-              ),
-              const SizedBox(
-                height: 8.0,
-              ),
-              AppButton(
-                name: "Searching",
+                name: "Merge Sort",
                 onTap: () {},
                 color: Colors.grey,
               ),
@@ -56,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               AppButton(
-                name: "Graphs",
+                name: "Quick Sort",
                 onTap: () {},
                 color: Colors.grey,
               ),
@@ -64,16 +57,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               AppButton(
-                name: "Heaps",
+                name: "Insertion Sort",
+                onTap: () {},
+                color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 8.0,
+              ),
+              AppButton(
+                name: "Heap Sort",
+                onTap: () {},
+                color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 8.0,
+              ),
+              AppButton(
+                name: "Selection Sort",
                 onTap: () {},
                 color: Colors.grey,
               ),
             ])));
   }
 
-  _openView(BuildContext context, String route) {
+  _openBubbleSortView(BuildContext context) {
     //TODO: use Navigator and MaterialPageRoute to open the SettingsView
     //Play with effect using fullScreenDialog = true or false
-    Navigator.pushNamed(context, route);
+    Navigator.pushNamed(context, "/bubble-sort");
   }
 }

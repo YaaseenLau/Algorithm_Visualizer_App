@@ -13,17 +13,17 @@ class AppButton extends StatelessWidget {
         onTap: onTap,
         child: Container(
           height: 50,
-          width: 300,
+          width: 400,
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 60),
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(20),
+            // borderRadius: BorderRadius.circular(20),
           ),
           child: Center(
             child: Text(
               name,
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: Colors.black, fontWeight: FontWeight.bold),
             ),
           ),
         ));

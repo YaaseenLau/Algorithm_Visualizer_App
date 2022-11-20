@@ -1,16 +1,17 @@
-import 'package:algorithms_visualizer/widgets/button.dart';
 import 'package:flutter/material.dart';
+import 'package:algorithms_visualizer/widgets/button.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class PathFindingAlgorithmsView extends StatefulWidget {
+  const PathFindingAlgorithmsView({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<PathFindingAlgorithmsView> createState() =>
+      _PathFindingAlgorithmsViewState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _PathFindingAlgorithmsViewState extends State<PathFindingAlgorithmsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,27 +29,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 16.0,
               ),
               const Text(
-                'Choose an algorithm type: ',
+                'Choose a pathfinding algorithm:',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               const SizedBox(
                 height: 16.0,
               ),
               AppButton(
-                  name: "Sorting",
-                  onTap: (() => _openView(context, "/sorting-algorithms"))),
+                  name: "A*", onTap: (() => _openView(context, "/a-star"))),
               const SizedBox(
                 height: 8.0,
               ),
               AppButton(
-                name: "Pathfinding",
-                onTap: (() => _openView(context, "/pathfinding-algorithms")),
-              ),
-              const SizedBox(
-                height: 8.0,
-              ),
-              AppButton(
-                name: "Searching",
+                name: "Breadth-First_Search",
                 onTap: () {},
                 color: Colors.grey,
               ),
@@ -56,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               AppButton(
-                name: "Graphs",
+                name: "Depth_First_Search",
                 onTap: () {},
                 color: Colors.grey,
               ),
@@ -64,9 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               AppButton(
-                name: "Heaps",
+                name: "Djikstra",
                 onTap: () {},
                 color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 8.0,
               ),
             ])));
   }
